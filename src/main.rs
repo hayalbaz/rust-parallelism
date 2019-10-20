@@ -16,7 +16,7 @@ fn find_largest_parallel(slice: &'static[i32]) -> i32{
     let first_half_handle = thread::spawn(move||
         find_largest(&slice[0..slice.len()/2]));
     let second_half_handle = thread::spawn(move||
-        find_largest(&slice[slice.len()/2+1..slice.len()-1]));
+        find_largest(&slice[slice.len()/2+1..slice.len()]));
 
     tmp[0] = first_half_handle.join().unwrap();
     tmp[1] = second_half_handle.join().unwrap();
